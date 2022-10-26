@@ -1,15 +1,15 @@
 <template>
   <HeaderMenu/>
-  <MainPage/>
+  <router-view></router-view>
 </template>
 
 <script>
-import HeaderMenu from './components/HeaderMenu.vue'
-import MainPage from './components/MainPage.vue'
+import HeaderMenu from './components/Layouts/HeaderMenu.vue'
+
 export default {
   name: 'App',
   components: {
-    HeaderMenu, MainPage
+    HeaderMenu
   }
 }
 </script>
