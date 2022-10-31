@@ -14,7 +14,7 @@
           </span>
         </div>
         <div class="text">
-          <sapn>{{room.description}}</sapn>
+          <span>{{room.description}}</span>
         </div>
         <div class="info">
             <div class="prices">
@@ -94,7 +94,7 @@ image span{
 img{
   object-fit: cover;
   height: 320px;
-  width: 615px;
+  width: 515px;
 }
 
 .details{
@@ -213,7 +213,7 @@ span{
   transition-duration: 600ms;
   transition-delay: 0ms;
   transition-timing-function: ease;
-  margin-left: 400px;
+  margin-left: 366px;
   margin-right: 20px;
   padding: 10px;
 }

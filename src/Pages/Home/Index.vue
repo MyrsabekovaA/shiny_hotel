@@ -1,11 +1,11 @@
 <template>
   <body>
-    <BookingForm/>
-    <About/>
-    <Rooms/>
-    <Services/>
-    <Gallery/>
-    <Contacts/>
+    <BookingForm id="home" @mouseover="$emit('change_page_part', 'home')"/>
+    <About id="about" @mouseover="$emit('change_page_part', 'about')"/>
+    <Rooms id="rooms" @mouseover="$emit('change_page_part', 'rooms')"/>
+    <Services @mouseover="$emit('change_page_part', 'services')"/>
+    <Gallery @mouseover="$emit('change_page_part', 'gallery')"/>
+    <Contacts @mouseover="$emit('change_page_part', 'contacts')"/>
   </body>
 </template>
 
@@ -19,7 +19,7 @@ import Contacts from "./Contacts";
 
 export default {
   name: "HomeIndex",
-  components:{ BookingForm, About, Rooms, Services, Gallery, Contacts},
+  components:{ BookingForm, About, Rooms, Services, Gallery, Contacts },
 
 }
 </script>

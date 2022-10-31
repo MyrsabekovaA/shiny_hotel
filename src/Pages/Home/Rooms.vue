@@ -1,17 +1,15 @@
 <template>
   <div class="rooms_info">
     <div class="wrapper">
-      <div class="heading">
-        <span style="flex-grow: 1;
-          max-width: 100%;"
+      <div class="row">
+        <div class="title">
+          <div class="heading">
+        <span
         >Our Rooms</span>
-        <hr>
+          </div>
+        </div>
       </div>
-      <div class="text">
-        <span style="flex-grow: 1;
-    max-width: 100%;">
-          Our rooms are designed to make you feel at home. We have a variety of rooms to suit your needs.</span>
-      </div>
+
       <div class="tabs">
         <ul class='tabs__header'>
           <li v-for="category in categories"
@@ -159,32 +157,52 @@ export default {
 
 <style scoped>
 .rooms_info{
-  display: block;
-  width: 100%;
-  position: relative;
+  padding-bottom: 60px;
+  padding-top: 100px;
 }
 
 .wrapper{
-  margin: 0;
-  position: relative;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  flex-direction: column;
-  -webkit-box-align: start;
-  align-items: flex-start;
-  padding-top: 8%;
-  padding-left: 4%;
-  padding-right: 4%;
-  padding-bottom: 5%;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .heading{
-  font-size: 4vw;
-  margin: 0 490px;
+  font-size: 14px;
+  color: #556F8B;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.row{
   display: flex;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.title{
   position: relative;
-  font-weight: 800;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  text-align: center;
+}
+
+
+@media only screen and (min-width: 1200px){
+  .wrapper {
+    max-width: 1170px;
+  }
+}
+
+@media only screen and (min-width: 992px){
+  .wrapper {
+    flex: 0 0 100%;
+    /*max-width: 100%;*/
+  }
 }
 
 .text{
@@ -207,10 +225,10 @@ hr{
 }
 .tabs{
   position: relative;
-  width: 100%;
+  width: 790px;
   display: block;
-  margin-left: 0px;
-  margin-top: 0px;
+  margin-left: 192px;
+  margin-top: 40px;
   color: black;
   cursor: auto;
   font-family: Montserrat, sans-serif;

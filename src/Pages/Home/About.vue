@@ -1,129 +1,162 @@
 <template>
   <div class="about_part">
-    <div class="text">
-      <transition appear @before-enter="beforeEnterWelcome" @enter="enterWelcome">
-        <h1>Welcome!</h1>
-      </transition>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur ipsum mollitia nulla quis vitae. A incidunt nemo quasi quos sunt.</p>
-    </div>
 
     <div class="content">
-      <div class="content_item-left">
-        <h1>About us</h1>
-        <hr>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias commodi delectus dolor nihil officia quo ratione unde? Alias asperiores distinctio earum eos laudantium, perferendis possimus reiciendis sunt? Accusantium, ad animi aut commodi consequuntur debitis eligendi harum impedit ipsum, magni molestiae nihil nisi numquam odit quis, quos sed suscipit ut voluptas voluptatem? Atque excepturi inventore laboriosam possimus veritatis!
-          <br></p>
-        <p style="margin-top: 50px">A accusantium cum dolorum earum eligendi eum impedit ipsa minus molestias, natus odio officia omnis quaerat sed ullam! Atque consequuntur eligendi error esse expedita harum necessitatibus neque nobis placeat quis quisquam, sed sint vero. Adipisci distinctio dolores illum laboriosam minus nulla rerum veniam.
-        </p>
-        <div class="btn_about">
-          <button type="button">Read More</button>
+      <div class="row">
+        <div class="content_item left">
+          <div class="about_text">
+            <div class="title">
+              <span>About us</span>
+              <h2>Lorem ipsum
+                <br>
+                dolor sit amet</h2>
+            </div>
+            <p class="text1">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, dolorem ducimus enim error et facere fugit illo labore laborum libero quibusdam, similique tempora tenetur? Amet cum odio possimus sed veritatis?
+            </p>
+            <p class="text2">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. At beatae cum dignissimos dolore, inventore ipsam mollitia natus, nulla recusandae, sint sit soluta tempora temporibus. Accusamus.
+            </p>
+            <a class="button" href="#">Read More</a>
+          </div>
+        </div>
+        <div class="content_item right">
+          <div class="about_pic">
+            <div class="row">
+              <div class="pic left">
+                <img class='img1' src="@/assets/main_page_photo.jpg" />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="content_item-right">
-        <img class='img1' src="@/assets/about_photo/photo1.jpg" />
-        <img class='img2' src="@/assets/about_photo/photo2.jpg" />
-        <img class='img3' src="@/assets/about_photo/photo3.jpg" />
       </div>
-    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "MainAbout"
+  name: "MainAbout",
 }
 </script>
 
 <style scoped>
 .about_part{
-  margin-top: 150px;
-}
-
-.about_part .text{
-  text-align: center;
-  color: black;
-}
-
-.about_part .text h1{
-  font-size: 50px;
-  font-weight: 600;
-}
-
-.about_part .text p{
-  font-size: 20px;
-  font-weight: 600;
-  padding: 10px 200px;
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
 
 .content{
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.row{
   display: flex;
-  padding: 30px 150px;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.content_item{
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.about_text{
   text-align: center;
+  padding: 0 35px;
 }
 
-.content_item-left, .content_item-right{
-  flex-basis: 50%;
+.title{
+  text-align: center;
+  margin-bottom: 22px;
 }
 
-.content_item-left h1{
-  font-size: 30px;
-  font-weight: 600;
-  color: black;
+.title span{
+  font-size: 14px;
+  color: #556F8B;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
-.content_item-left hr{
-  border: 0;
-  height: 4px;
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0),#758DAD , rgba(0, 0, 0, 0));
+.title h2{
+  font-size: 44px;
+  color: #19191a;
+  line-height: 58px;
+  margin-top: 10px;
 }
 
-.content_item-left p{
-  padding: 0 40px;
-  margin-top: 60px;
-  font-size: 16px;
-  font-weight: 600;
-  color: black;
-}
-
-.btn_about{
-  margin-top: 60px;
-}
-
-.btn_about button{
-  height: 50px;
-  width: 270px;
-  color: #758DAD;
-  background-color: transparent;
-  font-size: 20px;
+.text1{
+  margin-bottom: 10px;
+  color: #595960;
   font-weight: 500;
-  border-color: #758DAD;
-  box-shadow: 0 2px 15px rgba(38, 192, 248, 0.28);
-  outline: none;
 }
 
-.content_item-right{
-  padding: 30px 0;
+.text2{
+  margin-bottom: 35px;
+  color: #595960;
+  font-weight: 500;
 }
 
-.content_item-right img{
-  height: 200px;
-  width: 350px;
+.button{
+  color: #19191a;
+  display: inline-block;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 700;
+  position: relative;
+  text-decoration: none;
+  background-color: transparent;
 }
 
-.content_item-right .img1{
-  margin-top: 30px;
-  margin-left: 300px;
-}
-.content_item-right .img2{
-  margin-top: 1px;
-  margin-left: 300px;
-}
-
-.content_item-right .img3{
+.button:after{
   position: absolute;
-  margin-top: -87px;
-  margin-left: -539px;
-  border:5px solid #ffffff;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 2px;
+  background: #556F8B;
+  content: "";
+}
+
+.pic{
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+img{
+  min-width: 100%;
+  max-width: 100%;
+  vertical-align: middle;
+  border-style: none;
+}
+
+@media only screen and (min-width: 1200px){
+  .content {
+    max-width: 1170px;
+  }
+}
+
+@media only screen and (min-width: 992px){
+  .content_item {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+@media only screen and (min-width: 576px){
+  .content_item {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
 }
 </style>

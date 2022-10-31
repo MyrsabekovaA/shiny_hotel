@@ -1,12 +1,20 @@
 <template>
-  <HeaderMenu/>
-  <router-view></router-view>
+  <HeaderMenu :link="page_part" @change_page_part="change_page_part"/>
+  <router-view @change_page_part="change_page_part"></router-view>
 </template>
 
 <script>
 import HeaderMenu from './components/Layouts/HeaderMenu.vue'
 
 export default {
+  data: () => ({
+    page_part: 'home'
+  }),
+  methods: {
+    change_page_part(part) {
+      this.page_part = part;
+    }
+  },
   name: 'App',
   components: {
     HeaderMenu

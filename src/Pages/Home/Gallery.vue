@@ -42,7 +42,7 @@ export default {
 <style scoped>
 .wrapper{
   margin-top: 150px;
-  padding: 0 140px;
+  padding: 100px 140px;
 }
 
 h1{
@@ -61,7 +61,7 @@ hr{
 }
 
 button{
-  margin-left: 400px;
+  margin-left: 350px;
   border-radius: 20px;
   border: none;
   margin-top: 30px;

@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+import VueCarousel from '@chenfengyuan/vue-carousel';
 
 import router from './router';
 
@@ -17,4 +18,5 @@ library.add(faPhone, faEnvelope)
 
 createApp(App).use(router)
     .component('font-awesome-icon', FontAwesomeIcon)
+    .component(VueCarousel.name, VueCarousel)
     .mount('#app')

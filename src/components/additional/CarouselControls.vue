@@ -27,10 +27,10 @@ export default {
   cursor: pointer;
 }
 .left {
-  left: 1180px;
+  left: 1160px;
 }
 .right {
-  right: 200px;
+  right: 120px;
 }
 
 .fa-angle-left, .fa-angle-right{

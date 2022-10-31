@@ -36,77 +36,146 @@
               </a>
             </div>
             <router-link to="/" class="book_btn">Book Now</router-link>
-            <div class="language_switcher"></div>
+            <div class="language_box">
+              <language-switcher
+              :options="options"
+              @select="optionSelect"
+              :selected_option="selected"/>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-    <div :class="{'headroom--unpinned': scrolled}"  v-on="handleScroll" class="headroom header">
-      Myheader
+  <div class="headroom header"
+         :class="{sticky: position > 0}"
+    >
+      <div class="container_sticky">
+        <div class="row">
+          <div class="headroom_left">
+            <div class="logo">
+              <router-link to="/">
+                <img src="@/assets/logo1.svg" alt="image/svg+xml">
+              </router-link>
+            </div>
+          </div>
+          <div class="headroom_right">
+            <div class="nav_menu">
+              <nav>
+                <ul class="main_menu"
+                    :class="{ 'actived': link }">
+                  <li class="nav_item">
+                    <a class="nav_link"
+                                 :class="{active: link === 'home'}"
+                                 @click="$emit('change_page_part', 'home')" href="/#home">
+                      Home
+                    </a>
+                  </li>
+                  <li class="nav_item">
+                    <a class="nav_link"
+                                 :class="{active: link === 'about'}"
+                                 @click="$emit('change_page_part', 'about')" href="/#about">
+                      About us
+                    </a>
+                  </li>
+                  <li class="nav_item">
+                    <a class="nav_link"
+                                 :class="{active: link === 'rooms'}"
+                                 @click="$emit('change_page_part', 'rooms')" href="/#rooms">
+                      Rooms
+                    </a>
+                  </li>
+                  <li class="nav_item">
+                    <a class="nav_link"
+                       :class="{active: link === 'services'}"
+                       @click="$emit('change_page_part', 'services')" href="/">
+                      Services
+                    </a>
+                  </li>
+                  <li class="nav_item">
+                    <a class="nav_link"
+                                 :class="{active: link === 'gallery'}"
+                       @click="$emit('change_page_part', 'gallery')" href="/">
+                      Gallery
+                    </a>
+                  </li>
+                  <li class="nav_item">
+                    <a class="nav_link"
+                                 :class="{active: link === 'contacts'}"
+                       @click="$emit('change_page_part', 'contacts')" to="/">
+                      Contacts
+                    </a>
+                  </li>
+              </ul>
+              </nav>
+              <div class="sign_in">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--user svg --><path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0S96 57.3 96 128s57.3 128 128 128zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-<!--  <div class="container">-->
-<!--    <router-link to=""><img src="@/assets/logo_hotel.png" alt="logo" class="logo"></router-link>-->
-<!--    <nav>-->
-<!--      <ul class="nav_links">-->
-<!--        <li><a href="#">Home</a></li>-->
-<!--        <li><a href="#">Accommodation</a></li>-->
-<!--        <li><a href="#">Service</a></li>-->
-<!--        <li><a href="#">About</a></li>-->
-<!--        <li><a href="#">Contacts</a></li>-->
-<!--      </ul>-->
-<!--    </nav>-->
-<!--    <div class="extra_choice">-->
-<!--      <a class="book" href="#"><button>Book</button></a>-->
-
-<!--&lt;!&ndash;      Change&ndash;&gt;-->
-<!--      <div class="lang_menu">-->
-<!--        <select class="lang_choice" v-model="lang" @change="handleChange($event)">-->
-<!--          <option value="en">-->
-<!--            <img src="@/assets/flags/Flag_of_Russia.svg" alt="england" style="height: 30px; width: 30px;"/>-->
-<!--            EN-->
-<!--          </option>-->
-<!--          <option value="ru">RU</option>-->
-<!--        </select>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
 </div>
 </template>
 
 <script>
+import LanguageSwitcher from "@/components/additional/LanguageSwitcher";
 export default {
   name: "HeaderMenu",
-
-  data() {
-    return {
-      limitPosition: 1000000,
-      scrolled: false,
-      lastPosition: 800
-    };
-  },
-
-  methods: {
-    handleScroll() {
-      if (this.lastPosition < window.scrollY && this.limitPosition < window.scrollY) {
-        this.scrolled = true;
-        // move up!
-      }
-
-      if (this.lastPosition > window.scrollY) {
-        this.scrolled = false;
-        // move down
-      }
-
-      this.lastPosition = window.scrollY;
-      // this.scrolled = window.scrollY > 250;
+  components: {LanguageSwitcher},
+  props: {
+    link: {
+      type: String,
+      default: 'home'
     }
   },
-  created() {
-    window.addEventListener("scroll", this.handleScroll);
+  data() {
+    return {
+      position: 0,
+      selected: {
+        title: "EN",
+        cardImage: "USpng.png",
+        value: 1
+      },
+      options: [
+        {
+          title: "EN",
+          cardImage: "USpng.png",
+          value: 1
+        },
+        {
+          title: "RU",
+          cardImage: "Russia.png",
+          value: 2
+        },
+        {
+          title: "FR",
+          cardImage: "FR.png",
+          value: 3
+        },
+        {
+          title: "JP",
+          cardImage: "JP.png",
+          value: 4
+        },
+      ]
+    };
+
   },
-    unmounted() {
-    window.removeEventListener("scroll", this.handleScroll);
+  methods: {
+    optionSelect(option) {
+      console.log(option)
+      this.selected = option;
+    },
+  },
+  //fixed header
+  created () {
+    const self = this;
+    document.onscroll = function(){
+      self.position = document.documentElement.scrollTop || document.body.scrollTop;
+    }
   },
 };
 </script>
@@ -209,7 +278,7 @@ ul{
   letter-spacing: 2px;
 }
 
-.language_switcher{
+.language_box{
   display: inline-block;
   margin-left: 30px;
   cursor: pointer;
@@ -217,8 +286,15 @@ ul{
   position: relative;
 }
 
+.language_box span{
+  font-size: 16px;
+  color: #19191a;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
 @media only screen and (min-width: 1200px){
-  .container {
+  .container, .container_sticky {
     max-width: 1170px;
   }
 }
@@ -232,110 +308,132 @@ ul{
     flex: 0 0 50%;
     max-width: 50%;
   }
+
+  .headroom_left{
+    flex: 0 0 16.666667%;
+    max-width: 16.666667%;
+  }
+
+  .headroom_right{
+    flex: 0 0 83.333333%;
+    max-width: 83.333333%;
+  }
 }
 
 
 .headroom {
-  background-color: #DAE0E7;
-  position: fixed;
+  width: 100%;
+  height: 80px;
+  background-color: transparent;
   z-index: 100;
-  will-change: transform;
-  transition: transform 200ms linear;
 }
-.headroom--pinned {
-  transform: translateY(0%);
+
+.sticky {
+  background-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 9px 10px rgb(25 25 26 / 20%);
+  backdrop-filter: blur(10px);
+  position: fixed;
+  top:0;
+  overflow: hidden;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
-.headroom--unpinned {
-  transform: translateY(-100%);
+
+.container_sticky{
+  /*width: 100%;*/
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
 }
-/*.header{*/
-/*  display: block;*/
-/*}*/
 
-/*.top-nav{*/
-/*  border-bottom: 1px solid #e5e5e5;*/
-/*}*/
+.headroom_left{
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
 
-/*.menu_item{*/
-/*  position: relative;*/
-/*  z-index: 9;*/
-/*}*/
+.headroom_right{
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
 
-/*.sticky {*/
-/*  position: fixed;*/
-/*  top: 0;*/
-/*  width: 100%;*/
-/*}*/
-/*li, a, button {*/
-/*  font-family: 'Montserrat', sans-serif;*/
-/*  font-size: 14px;*/
-/*  font-weight: 500;*/
-/*  color: #000000;*/
-/*  text-decoration: none;*/
-/*  text-transform: uppercase;*/
-/*}*/
+.logo{
+  padding: 10px 0;
+}
 
-/*.container{*/
-/*  display: flex;*/
-/*  justify-content: space-between;*/
-/*  align-items: center;*/
-/*  padding: 20px 5%;*/
-/*}*/
+.logo a{
+  display: inline-block;
+}
 
-/*.logo{*/
-/*  cursor: pointer;*/
-/*  width: 130px;*/
-/*}*/
+.logo img{
+  width: 50px;
+  /*max-width: 100%;*/
+  vertical-align: middle;
+  border-style: none;
+}
 
-/*.nav_links{*/
-/*  list-style: none;*/
-/*}*/
+.headroom_right .nav_menu{
+  text-align: right;
+}
 
-/*.nav_links li{*/
-/*  display: inline-block;*/
-/*  padding: 0 20px;*/
-/*}*/
+nav{
+  display: inline-block;
+}
 
-/*.nav_links li a{*/
-/*  transition: all 0.3s ease 0s;*/
-/*}*/
+.main_menu{
+  display: inline-block;
+}
 
-/*.nav_links li a:hover{*/
-/*  color: #758DAD;*/
-/*  border-bottom: 1px solid #758DAD;*/
-/*}*/
+.sign_in{
+  display: inline-block;
+  margin-left: 43px;
+  padding: 27px 0;
+}
 
-/*.extra_choice{*/
-/*  display: inline-block;*/
-/*}*/
+.main_menu li{
+  list-style: none;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+}
 
-/*.book button{*/
-/*  padding: 9px 25px;*/
-/*  background-color: white;*/
-/*  border: 4px solid #758DAD;*/
-/*  color: #758DAD;*/
-/*  border-radius: 50px;*/
-/*  transition: all 0.3s ease 0s;*/
-/*  cursor: pointer;*/
-/*  margin-right: 20px;*/
-/*}*/
+.nav_item a{
+  font-size: 16px;
+  color: #19191a;
+  margin-right: 42px;
+  font-weight: 500;
+  display: inline-block;
+  padding: 27px 0;
+  position: relative;
+  transition: all 0.3s;
+  text-decoration: none;
+  background-color: transparent
+}
 
-/*.book:hover button{*/
-/*  background-color: #758DAD;*/
-/*  color: white;*/
-/*}*/
+.nav_item a:hover{
+  color: #556F8B;
+  font-size: 18px;
+  font-weight: 600;
+  transition: all 0.3s;
+}
 
-/*.lang_menu{*/
-/*  display: inline-block;*/
-/*}*/
+.nav_item a.active{
+  color: #556F8B;
+  font-size: 18px;
+  font-weight: 700;
+  transition: all 0.3s;
+}
 
-/*.lang_choice{*/
-/*  width: 80px;*/
-/*  height: 40px;*/
-/*}*/
-
-/*.lang_choice img{*/
-/*  width: 30px;*/
-/*  height: 30px;*/
-/*}*/
+.sign_in{
+  display: inline-block;
+  margin-left: 43px;
+  padding: 27px 0;
+  width: 16px;
+}
 </style>
